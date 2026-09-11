@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Arama motoru haritası
-Sitemap: https://kadikoyantika.com.tr/sitemap.xml

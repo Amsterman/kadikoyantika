@@ -93,6 +93,7 @@
     html, body {
       max-width: 100%;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -195,6 +196,10 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-body);
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent-brass-light);
     }
 
     .header-cta {
@@ -222,10 +227,19 @@
       color: #0b0a09;
       border: 1px solid #d8b776;
     }
+    .btn-brass:hover {
+      background: linear-gradient(135deg, #d3b16d, #b89146);
+      box-shadow: 0 4px 14px rgba(197, 160, 89, 0.3);
+    }
     .btn-hollow {
       background: transparent;
       border: 1px solid var(--border-strong);
       color: var(--text-main);
+    }
+    .btn-hollow:hover {
+      border-color: var(--accent-brass);
+      background: var(--accent-brass-dim);
+      color: var(--accent-brass-light);
     }
 
     /* HERO */
@@ -306,6 +320,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      scroll-margin-top: 80px;
     }
     .callout-text h3 {
       font-size: 1.4rem;
@@ -325,6 +340,7 @@
     /* SECTIONS */
     section {
       padding: 50px 0;
+      scroll-margin-top: 70px;
     }
     .section-head {
       text-align: center;
@@ -455,6 +471,11 @@
       border: 1px solid rgba(197, 160, 89, 0.25);
       border-radius: 14px;
       color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .seo-tag-pill:hover {
+      border-color: var(--accent-brass);
+      color: var(--accent-brass-light);
     }
 
     /* LOCATION & MAP */
@@ -580,9 +601,7 @@
       fill: currentColor;
     }
 
-    /* ==========================================================
-       MOBİL OPTİMİZASYONU (RESPONSIVE FIXES)
-       ========================================================== */
+    /* MOBİL DÜZENLEMELER */
     @media (max-width: 992px) {
       .category-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -600,16 +619,16 @@
 
     @media (max-width: 768px) {
       .top-strip {
-        display: none; /* Mobilde dikey alanı tıkamaması için gizlendi */
+        display: none;
       }
       .nav-links {
         display: none;
       }
       .header-cta .btn-hollow {
-        display: none; /* Mobilde alan kazanmak için sadece Fotoğraf Gönder butonu kaldı */
+        display: none;
       }
       .btn {
-        width: 100%; /* Mobilde tıklaması kolay tam genişlik butonlar */
+        width: 100%;
       }
       .hero-buttons {
         flex-direction: column;
@@ -642,7 +661,7 @@
         min-height: 260px;
       }
       .floating-wa span {
-        display: none; /* Mobilde sadece ikon olarak kalarak ekranı kapatmaz */
+        display: none;
       }
       .floating-wa {
         padding: 12px;
@@ -676,11 +695,12 @@
         </div>
       </a>
 
+      <!-- SEO Odaklı Çapa Menü Linkleri -->
       <nav class="nav-links" aria-label="Ana Menü">
-        <a href="#koleksiyon">Koleksiyon</a>
-        <a href="#degerleme">Değerleme & Alım</a>
-        <a href="#kadikoy-antika-pazari">Antika Pazarı</a>
-        <a href="#konum">İletişim</a>
+        <a href="#kadikoy-antika-koleksiyonu">Antika Koleksiyonu</a>
+        <a href="#antika-degerleme-ve-nakit-alim">Antika Değerleme & Alım</a>
+        <a href="#kadikoy-antika-pazari-rehberi">Antika Pazarı</a>
+        <a href="#iletisim-ve-dukkan-konumu">İletişim</a>
       </nav>
 
       <div class="header-cta">
@@ -707,7 +727,7 @@
           <a href="https://wa.me/905367906669?text=Merhaba,%20Kadıköy%20antika%20alım-satım%20için%20ürünlerimin%20fotoğraflarını%20iletiyorum." target="_blank" rel="noopener" class="btn btn-brass">
             WhatsApp İle Fiyat Al
           </a>
-          <a href="#konum" class="btn btn-hollow">
+          <a href="#iletisim-ve-dukkan-konumu" class="btn btn-hollow">
             Dükkana Yol Tarifi
           </a>
         </div>
@@ -729,8 +749,9 @@
       </div>
     </section>
 
+    <!-- 1. HEDEF ÇAPA: ANTİKA DEĞERLEME VE NAKİT ALIM -->
     <div class="container">
-      <div class="callout-box" id="degerleme">
+      <div class="callout-box" id="antika-degerleme-ve-nakit-alim">
         <div class="callout-text">
           <span class="section-tag">Hızlı Nakit Alım</span>
           <h3>Kadıköy Antika Eşyalarınızı Satın</h3>
@@ -747,7 +768,8 @@
       </div>
     </div>
 
-    <section id="koleksiyon">
+    <!-- 2. HEDEF ÇAPA: KADIKÖY ANTİKA KOLEKSİYONU -->
+    <section id="kadikoy-antika-koleksiyonu">
       <div class="container">
         <div class="section-head">
           <span class="section-tag">Uzmanlık Alanlarımız</span>
@@ -864,7 +886,8 @@
       </div>
     </section>
 
-    <section id="kadikoy-antika-pazari">
+    <!-- 3. HEDEF ÇAPA: KADIKÖY ANTİKA PAZARI REHBERİ -->
+    <section id="kadikoy-antika-pazari-rehberi">
       <div class="container">
         <div class="seo-narrative">
           <span class="section-tag">Kadıköy Antikacı Rehberi</span>
@@ -877,20 +900,21 @@
           </p>
           
           <div class="seo-tags-cluster">
-            <a href="#kadikoy-antika-pazari" class="seo-tag-pill">#kadıköy antika</a>
-            <a href="#kadikoy-antika-pazari" class="seo-tag-pill">#kadıköy antika pazarı</a>
-            <a href="#kadikoy-antika-pazari" class="seo-tag-pill">#kadıköy antikacı</a>
-            <a href="#degerleme" class="seo-tag-pill">#antika alanlar kadıköy</a>
-            <a href="#degerleme" class="seo-tag-pill">#antika eşya alan yerler</a>
-            <a href="#koleksiyon" class="seo-tag-pill">#kadıköy antika plak</a>
-            <a href="#konum" class="seo-tag-pill">#eğitim mahallesi antikacı</a>
-            <a href="#konum" class="seo-tag-pill">#çayıriçi camii sokak antika</a>
+            <a href="#kadikoy-antika-pazari-rehberi" class="seo-tag-pill">#kadıköy antika</a>
+            <a href="#kadikoy-antika-pazari-rehberi" class="seo-tag-pill">#kadıköy antika pazarı</a>
+            <a href="#kadikoy-antika-pazari-rehberi" class="seo-tag-pill">#kadıköy antikacı</a>
+            <a href="#antika-degerleme-ve-nakit-alim" class="seo-tag-pill">#antika alanlar kadıköy</a>
+            <a href="#antika-degerleme-ve-nakit-alim" class="seo-tag-pill">#antika eşya alan yerler</a>
+            <a href="#kadikoy-antika-koleksiyonu" class="seo-tag-pill">#kadıköy antika plak</a>
+            <a href="#iletisim-ve-dukkan-konumu" class="seo-tag-pill">#eğitim mahallesi antikacı</a>
+            <a href="#iletisim-ve-dukkan-konumu" class="seo-tag-pill">#çayıriçi camii sokak antika</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="konum" style="padding-top: 0;">
+    <!-- 4. HEDEF ÇAPA: İLETİŞİM VE DÜKKAN KONUMU -->
+    <section id="iletisim-ve-dukkan-konumu" style="padding-top: 0;">
       <div class="container">
         <div class="section-head">
           <span class="section-tag">Ziyaret Edin</span>
@@ -967,10 +991,10 @@
         <div class="footer-col">
           <h4>Kategoriler</h4>
           <ul>
-            <li><a href="#koleksiyon">Kadıköy Antika Plak</a></li>
-            <li><a href="#kadikoy-antika-pazari">Kadıköy Antika Pazarı</a></li>
-            <li><a href="#degerleme">Antika Eşya Değerleme</a></li>
-            <li><a href="#konum">Dükkan & Konum</a></li>
+            <li><a href="#kadikoy-antika-koleksiyonu">Kadıköy Antika Plak</a></li>
+            <li><a href="#kadikoy-antika-pazari-rehberi">Kadıköy Antika Pazarı</a></li>
+            <li><a href="#antika-degerleme-ve-nakit-alim">Antika Eşya Değerleme</a></li>
+            <li><a href="#iletisim-ve-dukkan-konumu">Dükkan & Konum</a></li>
           </ul>
         </div>
 
